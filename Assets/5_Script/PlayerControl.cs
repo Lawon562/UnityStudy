@@ -12,6 +12,6 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-        this.transform.Translate(0.01f, 0, 0);
+        this.transform.Translate(Vector3.right * Time.deltaTime * 2f);
     }
 }
