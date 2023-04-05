@@ -66,8 +66,6 @@ public class NPCControl : MonoBehaviour
     void Update()
     {
         //NPCMove();
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
-        this.transform.Translate(Vector3.zero * Time.deltaTime * Speed);
+        
     }
 }
