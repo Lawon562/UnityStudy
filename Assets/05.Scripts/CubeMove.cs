@@ -23,7 +23,7 @@ public class CubeMove : MonoBehaviour
 
         if (time >= 3f)
         {
-            CubeMove.speed *= 1.04f;
+            CubeMove.speed *= 1.2f;
             time = 0f;
         }
         this.transform.Translate(Vector3.left * Time.deltaTime * speed);

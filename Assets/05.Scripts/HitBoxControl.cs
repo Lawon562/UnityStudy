@@ -17,7 +17,9 @@ public class HitBoxControl : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        
         GameManager.pool.RemoveAt(0);
+        
         Destroy(other.gameObject);
     }
 

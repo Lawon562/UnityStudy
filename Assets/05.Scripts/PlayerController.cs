@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI StatementText;
     public TextMeshProUGUI ScoreText;
+
     void Start()
     {
         z = 0;
@@ -40,9 +41,7 @@ public class PlayerController : MonoBehaviour
             float direction = dir.magnitude;
             if (direction < 8)
             {
-                
                 int tmp = (int)Mathf.Round(direction)-2;
-                Debug.Log(tmp);
                 GameObject obj = GameManager.pool[0];
                 if (obj.transform.position.x >= transform.position.x)
                     if (obj.transform.position.z == transform.position.z)
@@ -55,20 +54,32 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        StatementText.text = "None";
-                        ScoreText.text = (int.Parse(ScoreText.text) - 100).ToString();
+                        DecreaseScore();
                     }
                 GameManager.pool.RemoveAt(0);
-                
-                Destroy(obj);
-                
+                Destroy(obj);  
             } 
             else
             {
-                StatementText.text = "None";
-                ScoreText.text = (int.Parse(ScoreText.text) - 100).ToString();
+                DecreaseScore();
             }
         }
+    }
+
+    public static void IncreaseScore()
+    {
+
+    }
+
+    public void DecreaseScore()
+    {
+        StatementText.text = "None";
+        ScoreText.text = (int.Parse(ScoreText.text) - 100).ToString();
+    }
+
+    public static void DecreaseScoreOutLine()
+    {
+        new PlayerController().DecreaseScore();
     }
 
 

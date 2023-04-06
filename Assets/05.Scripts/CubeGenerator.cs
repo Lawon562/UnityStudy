@@ -11,7 +11,7 @@ public class CubeGenerator : MonoBehaviour
     private void SetTerm(out float variable)
     {
         variable = Mathf.Round(Random.Range(0.6f, maxTerm));
-        maxTerm *= 0.998f;
+        maxTerm *= 0.996f;
     }
     // Start is called before the first frame update
     void Start()

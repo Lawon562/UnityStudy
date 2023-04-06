@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class ParticleManager : MonoBehaviour
 {
-    public GameObject obj;
     
 
     public void ExplosionPlay()
     {
-        GameObject explosion = Instantiate(obj);
-        explosion.transform.position = transform.position;
+        
     }
 }
