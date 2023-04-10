@@ -7,7 +7,11 @@ using UnityEngine.UI;
 public class EnemyState : MonoBehaviour
 {
     public float Hp = 100f;
-    
+
+    [SerializeField]
+    private GameObject AttackParticle;
+    [SerializeField]
+    private GameObject DeathParticle;
     public float Defense(float amount)
     {
         if (Hp <= 0) return 0;
@@ -25,10 +29,15 @@ public class EnemyState : MonoBehaviour
             this.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-360, -360), 90, Random.Range(0, 360)));
             this.gameObject.GetComponent<BoxCollider>().isTrigger = true;
             TImerController.Score++;
+            GameObject deathParticle = Instantiate(DeathParticle);
+            deathParticle.transform.position = this.transform.position;
+            Destroy(deathParticle, 1f);
             Destroy(this.gameObject, 1f);
             return 0;
         }
-
+        GameObject attackParticle = Instantiate(AttackParticle);
+        attackParticle.transform.position = this.transform.position;
+        Destroy(attackParticle, 1f);
         return this.Hp;
     }
 
