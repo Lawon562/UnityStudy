@@ -17,6 +17,18 @@ public class PlayerFire : MonoBehaviour
         {
             Transform bulletPos = Instantiate(this.bulletFactory).transform;
             bulletPos.position = firePosition.transform.position + new Vector3(0, 1, 0);
+            GetComponent<AudioSource>().Stop();
+            GetComponent<AudioSource>().Play();
         }
+    }
+
+    [SerializeField]
+    private GameObject particle;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject obj = Instantiate(this.particle);
+        obj.transform.position = this.transform.position;
+        Destroy(obj, 1f);
     }
 }

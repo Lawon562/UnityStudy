@@ -31,7 +31,7 @@ public class EnemyManager : MonoBehaviour
      * - If timer is greater than delayTime, create a monster
      */
     [SerializeField]
-    private float delayTime = 1f;
+    private float delayTime;
     /**
      * Description
      * - The variable that stores the current time 
@@ -53,25 +53,6 @@ public class EnemyManager : MonoBehaviour
         return 0f;
     }
 
-    /**
-     * Description
-         * - If the current time (timer) is greater than the monster creation interval (delayTime), 
-         *  this function creates an instance of the specified object and sets its position. 
-         *  It also resets the timer to the current time value 0f.
-     * @param None
-     * @return void
-     */
-    //private void CreateEnemy()
-    //{
-    //    timer += Time.deltaTime;
-    //    if (timer >= delayTime)
-    //    {
-    //        timer = TimerReset();
-    //        GameObject temp = Instantiate(EnemyPrefab);
-    //        temp.transform.position = FirePoint;
-    //    }
-    //}
-
     private IEnumerator CreateEnemy()
     {
         while (true)
@@ -83,25 +64,21 @@ public class EnemyManager : MonoBehaviour
         
     }
 
+    public AudioSource audio;
+
     void Start()
     {
         FirePoint = this.transform.position;
-        delayTime = 1f;
         timer = TimerReset();
 
-        Vector3 targetDir;
-        int randval = Random.Range(0, 100);
-        print(randval);
-        if (randval <= 30)
-        {
-            //this.transform.Find("");
-            GameObject target = GameObject.Find("Player");
-            targetDir = target.transform.position - this.transform.position;
-            targetDir.Normalize();
-
-            Vector3.Distance(target.transform.position, this.transform.position);
-        }
+        
+        audio = GetComponent<AudioSource>();
+        audio.volume = 1.0f;
+        audio.loop = true;
+        audio.Play();
+        
         StartCoroutine(CreateEnemy());
+        
     }
 
     void Update()
