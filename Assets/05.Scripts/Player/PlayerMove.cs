@@ -29,6 +29,10 @@ public class PlayerMove : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         Vector3 dir = new Vector3(h, v, 0);
         this.transform.position += dir * Time.deltaTime * speed;
+<<<<<<< HEAD
         ScreenOutCheck();
+=======
+        //ScreenOutCheck();
+>>>>>>> c4571b26e3a232e7d76c93c8f6c902e348e6aeb9
     }
 }

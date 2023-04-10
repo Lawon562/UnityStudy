@@ -30,8 +30,13 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         Vector3 targetDir;
+<<<<<<< HEAD
        // if (GetRandom() <= guidedPercentage)
         //{
+=======
+        if (GetRandom() <= guidedPercentage)
+        {
+>>>>>>> c4571b26e3a232e7d76c93c8f6c902e348e6aeb9
             GameObject target = GameObject.Find("Player");
             if(target != null )
             {
@@ -40,11 +45,19 @@ public class Enemy : MonoBehaviour
                 //Vector3.Distance(target.transform.position, this.transform.position);
                 dir = targetDir;
             }
+<<<<<<< HEAD
         //}
         //else
         //{
          //   dir = Vector3.down;
         //}
+=======
+        }
+        else
+        {
+            dir = Vector3.down;
+        }
+>>>>>>> c4571b26e3a232e7d76c93c8f6c902e348e6aeb9
     }
 
 
@@ -63,6 +76,7 @@ public class Enemy : MonoBehaviour
         Hp -= 50;
         if (Hp <= 0)
         {
+<<<<<<< HEAD
             GameObject obj = Instantiate(this.particle);
             obj.transform.position = this.transform.position;
             Camera.main.GetComponent<Shake>().enabled = true;
@@ -71,6 +85,13 @@ public class Enemy : MonoBehaviour
             // Vector3 dir = Vector3.down;
             Destroy(this.gameObject);   // 현재 객체 삭제
             // Destroy(base.gameObject);   // 현재 객체의 상위 객체를 삭제  
+=======
+            // Vector3 dir = Vector3.down;
+            Destroy(this.gameObject);   // 현재 객체 삭제
+            // Destroy(base.gameObject);   // 현재 객체의 상위 객체를 삭제
+
+            
+>>>>>>> c4571b26e3a232e7d76c93c8f6c902e348e6aeb9
         }
         
     }

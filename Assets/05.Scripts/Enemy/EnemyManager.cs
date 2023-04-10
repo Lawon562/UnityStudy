@@ -63,20 +63,26 @@ public class EnemyManager : MonoBehaviour
         }
         
     }
+<<<<<<< HEAD
 
     public AudioSource audio;
 
+=======
+>>>>>>> c4571b26e3a232e7d76c93c8f6c902e348e6aeb9
     void Start()
     {
         FirePoint = this.transform.position;
         timer = TimerReset();
 
         
+<<<<<<< HEAD
         audio = GetComponent<AudioSource>();
         audio.volume = 1.0f;
         audio.loop = true;
         audio.Play();
         
+=======
+>>>>>>> c4571b26e3a232e7d76c93c8f6c902e348e6aeb9
         StartCoroutine(CreateEnemy());
         
     }
