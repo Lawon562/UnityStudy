@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * 클릭 시 마우스 포인터 좌표를 알아내어
+ * 그 좌표에 있는 Object를 가져와 Enemy인지 비교하고,
+ * Enemy라면 EnemyState의
+ */
 public class PlayerAttack : MonoBehaviour
 {
     
