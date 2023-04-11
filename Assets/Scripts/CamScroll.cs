@@ -32,6 +32,9 @@ public class CamScroll : MonoBehaviour
     public void CamScrolling()
     {
         camera.transform.position += (Vector3.right * Time.deltaTime * Speed * dir);
+        Vector3 tempPos = camera.transform.position;
+        tempPos.x = Mathf.Clamp(tempPos.x, -30, 38);
+        camera.transform.position = tempPos;
     }
 
 
