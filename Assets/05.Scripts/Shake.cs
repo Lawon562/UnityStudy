@@ -28,7 +28,7 @@ public class Shake : MonoBehaviour
             time += Time.deltaTime;
             if (time > 0.05f)
             {
-                transform.position = new Vector3(Random.Range(-0.2f, 0.2f), 1, -10);
+                transform.position = new Vector3(Random.Range(-0.15f, 0.15f), 1, -10);
                 time = 0f;
             }
         }else

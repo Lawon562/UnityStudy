@@ -59,6 +59,7 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(collision.gameObject);
+        if (collision.gameObject.name == "Player") ScoreManager.Playable = false;
         if (Hp <= 0) return;
         Hp -= 50;
         if (Hp <= 0)
