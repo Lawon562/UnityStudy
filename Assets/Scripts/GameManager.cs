@@ -15,9 +15,13 @@ public class GameManager : MonoBehaviour
     public Transform SpawnPos;
     [SerializeField]
     private GameObject zombie;
+    [SerializeField]
+    private GameObject BloodEffect;
+
     public static List<GameObject> zombieList;
 
     public Text CreditText;
+    public Text StageText;
     public Slider MyHpSlider;
     public GameObject FailScene;
 
@@ -26,6 +30,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StageText.text = "Stage : " + GameData.m_stage;
         gState = GAME_STATE.INIT;
         zombieList = new List<GameObject>();
         GameData.m_baseLife = 10f;
@@ -46,6 +51,30 @@ public class GameManager : MonoBehaviour
         GameObject copy = Instantiate(zombie, SpawnPos.position, SpawnPos.rotation);
         zombieList.Add(copy);
         copy.transform.position += new Vector3(0,0,Random.Range(-6,6));
+    }
+    float curCount_e = 0;
+    public void GameRule()
+    {
+        switch (gState)
+        {
+            case GAME_STATE.PLAY:
+                if (GameData.m_baseLife <= 0)
+                {
+                    GameData.m_baseLife = 100;
+                    curCount_e = 0;
+                    GameData.killCount = 0;
+                    SceneManager.LoadScene(Key.OverSceneName);
+                }
+                if (GameData.killCount >= curCount_e)
+                {
+                    curCount_e = 0;
+                    GameData.killCount = 0;
+                    SceneManager.LoadScene(Key.ClearSceneName);
+                    
+                }
+                break;
+
+        }
     }
 
     public void GameFlow()
@@ -81,6 +110,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CreditText.text = "Credit : " + GameData.m_Coin;
+        
         MyHpSlider.value = GameData.m_baseLife;
         GameFlow();
         if (GameData.m_baseLife <= 0)
@@ -113,7 +143,8 @@ public class GameManager : MonoBehaviour
                     //hit.collider.GetComponent<ZombieController>().BeAttacked(0.5f);
                     hit.collider.SendMessage("BeAttacked", 0.5f);
                     //Destroy(hit.transform.gameObject);
-                    
+                    Debug.Log("ÁÂÇ¥" + hit.point);
+                    Instantiate(BloodEffect, hit.point, Quaternion.identity);
                 }
 
             }
