@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MouseCameraController : MonoBehaviour
 {
+    [SerializeField]
+    private Transform Player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,7 @@ public class MouseCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.transform.position = Player.position + new Vector3(0, 0, 0);
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         float mouseWheel = Input.GetAxis("Mouse ScrollWheel");
